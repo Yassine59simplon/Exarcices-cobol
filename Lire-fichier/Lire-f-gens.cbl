@@ -4,7 +4,8 @@
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
-           SELECT FICHIER ASSIGN TO 'gens.txt'     
+      *    Fichier d'entrée assigné au nom "gens.txt"
+           SELECT FICHIER ASSIGN TO 'gens.txt' 
                ORGANIZATION IS LINE SEQUENTIAL.
 
        DATA DIVISION.
@@ -17,7 +18,8 @@
        WORKING-STORAGE SECTION.
        01 WS-IDX       PIC 99 VALUE 1.
            
-       01 WS-TABLE.    
+       01 WS-TABLE. 
+      *    Tableau pouvant contenir jusqu'à 10 enregistrements   
            05 WS-GENS OCCURS 10 TIMES.
               10 WS-NOM         PIC x(12).
               10 WS-PRENOM      PIC x(12).
@@ -26,8 +28,9 @@
        77 WS-FIN_F   PIC X  VALUE "C".  
 
        PROCEDURE DIVISION.
-      *DEBUT FE FICHIER 
+      *DEBUT DE FICHIER 
        OPEN INPUT FICHIER.
+      * Lecture ligne par ligne jusqu'à la fin du fichier
        PERFORM UNTIL WS-FIN_F = "F"
            READ FICHIER
               AT END MOVE "F" TO WS-FIN_F
@@ -38,10 +41,10 @@
               ADD 1 TO WS-IDX
            END-READ
        END-PERFORM.
-       
+      * Fermeture du fichier 
        CLOSE FICHIER.
 
-           PERFORM VARYING WS-IDX FROM 1 BY 1 UNTIL WS-IDX =11
+           PERFORM VARYING WS-IDX FROM 1 BY 1 UNTIL WS-IDX = 11
                  DISPLAY "Nom        :"WS-NOM(WS-IDX)
                  SPACE WITH NO ADVANCING
                  DISPLAY "Prenom     :"WS-PRENOM(WS-IDX) 
