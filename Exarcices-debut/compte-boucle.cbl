@@ -1,0 +1,20 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. BOUCLE-COMPTEUR.
+
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01  WS-COMPTEUR     PIC 99 VALUE 1.
+
+       PROCEDURE DIVISION.
+           PERFORM
+               VARYING WS-COMPTEUR FROM 1 BY 1
+               UNTIL WS-COMPTEUR > 10
+               DISPLAY WS-COMPTEUR.
+           END-PERFORM 
+              
+       STOP RUN.
+
+
+
+
+
