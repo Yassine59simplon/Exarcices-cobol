@@ -37,7 +37,6 @@
               NOT AT END 
               MOVE F-NOM    TO WS-NOM(WS-IDX)
               MOVE F-PRENOM TO WS-PRENOM(WS-IDX)
-
               ADD 1 TO WS-IDX
            END-READ
        END-PERFORM.
